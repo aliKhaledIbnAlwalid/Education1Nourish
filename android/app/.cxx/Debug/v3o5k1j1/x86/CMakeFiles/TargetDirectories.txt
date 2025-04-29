@@ -1,0 +1,2 @@
+C:/Users/Ali Khaled/Desktop/eduNourish - Copy/android/app/.cxx/Debug/v3o5k1j1/x86/CMakeFiles/edit_cache.dir
+C:/Users/Ali Khaled/Desktop/eduNourish - Copy/android/app/.cxx/Debug/v3o5k1j1/x86/CMakeFiles/rebuild_cache.dir

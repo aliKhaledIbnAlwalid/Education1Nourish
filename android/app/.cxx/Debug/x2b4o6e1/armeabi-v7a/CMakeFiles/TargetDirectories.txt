@@ -1,0 +1,2 @@
+D:/final project (EduNourish)/eduNourish/android/app/.cxx/Debug/x2b4o6e1/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/final project (EduNourish)/eduNourish/android/app/.cxx/Debug/x2b4o6e1/armeabi-v7a/CMakeFiles/rebuild_cache.dir
