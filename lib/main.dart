@@ -8,6 +8,7 @@ import 'features/student/providers/student_provider.dart';
 import 'features/teacher/providers/teacher_provider.dart';
 import 'features/student/widgets/btm_nav_bar_student.dart';
 import 'features/teacher/widgets/btm_nav_bar.dart';
+import 'features/teacher/widgets/btm_nav_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
