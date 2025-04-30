@@ -6,12 +6,12 @@ class SettingsStudent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff98afb0),
+      backgroundColor:Color.fromARGB(255, 217, 215, 215),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text('Settings',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
       ),
       body: Column(
         children: [
@@ -21,27 +21,28 @@ class SettingsStudent extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           const Text("HI",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                color: Color(0xff008f99),
+                fontSize: 18,
+              )),
           const SizedBox(height: 5),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
-              color: const Color(0xff98afb0),
-              borderRadius: BorderRadius.circular(25),
+              color: const Color(0xff008f99),
+              borderRadius: BorderRadius.circular(15),
             ),
             child: const Text(
-              "User Name",
+              "Mario Samy",
               style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
+                  color: Color.fromARGB(255, 255, 255, 255), fontSize: 18),
             ),
           ),
           const SizedBox(height: 20),
           Expanded(
             child: Container(
               decoration: const BoxDecoration(
-                color: const  Color(0xffe8e6e9),
+                color:Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
@@ -50,14 +51,13 @@ class SettingsStudent extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(20),
                 children: [
-                  buildSwitchTile(),
                   buildSettingsTile(
                       context, Icons.notifications, "Notifications"),
                   buildSettingsTile(context, Icons.privacy_tip, "Privacy"),
                   buildSettingsTile(context, Icons.security, "Security"),
                   buildSettingsTile(context, Icons.account_box, "Account"),
-                  buildSettingsTile(context, Icons.help, "Help"),
                   buildSettingsTile(context, Icons.info, "About"),
+                  buildSettingsTile(context, Icons.help, "Help"),
                 ],
               ),
             ),
@@ -67,20 +67,19 @@ class SettingsStudent extends StatelessWidget {
     );
   }
 
-  Widget buildSwitchTile() {
-    return SwitchListTile(
-      title: const Text("Dark Mode"),
-      secondary: const Icon(Icons.dark_mode),
-      value: false,
-      onChanged: (value) {},
-    );
-  }
-
   Widget buildSettingsTile(BuildContext context, IconData icon, String title) {
     return ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      trailing: const Icon(Icons.arrow_forward_ios),
+      leading: Icon(icon, color: const Color(0xff008f99)),
+      title: Text(
+        title,
+        style: TextStyle(
+          color: Color(0xff008f99),
+        ),
+      ),
+      trailing: const Icon(
+        Icons.arrow_forward_ios,
+        color: Color(0xff008f99),
+      ),
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => PlaceholderPage(title: title)),

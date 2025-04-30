@@ -20,7 +20,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
 
   final List<Widget> _pages = [
     const DrawerPage(),
-    ClassScheduleStudent(),
+    MyClassSchedule(),
     const HomeStudent(),
     Activities(),
   ];
@@ -50,7 +50,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (_) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height * 0.7,
         child: const SettingsStudent(),
       ),
     );
@@ -61,7 +61,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         currentIndex: _selectedIndex,
         onTap: _onTap,

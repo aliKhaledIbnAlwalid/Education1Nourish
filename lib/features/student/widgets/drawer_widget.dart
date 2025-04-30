@@ -1,14 +1,12 @@
-import 'package:edunourish/features/Parent/features/Exam/presentation/views/exam_screen.dart';
 import 'package:edunourish/features/student/screens/home/attendance_screen.dart';
-import 'package:edunourish/features/student/screens/home/exam_screen.dart';
+import 'package:edunourish/features/student/screens/home/exams_screen.dart';
 import 'package:edunourish/features/student/screens/home/food_place_screen.dart';
-import 'package:edunourish/features/student/screens/home/settings_screen.dart';
 import 'package:edunourish/features/student/screens/list/class_schedule_screen.dart';
 import 'package:edunourish/features/student/screens/list/grades_screen.dart';
 import 'package:edunourish/features/student/screens/list/my_teachers_screen.dart';
+import 'package:edunourish/features/student/screens/list/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/home/notifiactions_screen.dart';
-import '../screens/home/profile_screen.dart';
 
 class DrawerPage extends StatelessWidget {
   const DrawerPage({super.key});
@@ -16,9 +14,9 @@ class DrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffcdc9cf),
+      backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
-        backgroundColor: const Color(0xffcdc9cf),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.notifications_none_outlined, size: 30),
@@ -55,19 +53,19 @@ class DrawerPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Colors.black,
+              color: Color(0xff008f99),
             ),
           ),
           const Text(
             'MarioSamy@gamil.com',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.black,
+              color: Color(0xff008f99),
             ),
           ),
           const SizedBox(height: 10),
           const Divider(
-            color: Colors.black,
+            color: Color(0xff008f99),
             thickness: 1,
             indent: 20,
             endIndent: 20,
@@ -80,14 +78,14 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.people_outline,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'My Teachers',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {
@@ -103,21 +101,21 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.fastfood_outlined,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'Restaurent',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Restaurant(),
+                          builder: (context) => const FoodPlaceScreen(),
                         ),
                       );
                     },
@@ -126,21 +124,21 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.table_view_rounded,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'My Class Schedule',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ClassScheduleStudent(),
+                          builder: (context) => MyClassSchedule(),
                         ),
                       );
                     },
@@ -149,14 +147,14 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.task_outlined,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'grades',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {
@@ -172,20 +170,20 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.book_outlined,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'ُExams',
                       style: TextStyle(
                           fontSize: 18,
-                          color: Colors.black,
+                          color: Color(0xff008f99),
                           fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ExamScreen(),
+                          builder: (context) => const ExamsScreen(),
                         ),
                       );
                     },
@@ -194,14 +192,14 @@ class DrawerPage extends StatelessWidget {
                     leading: const Icon(
                       Icons.calendar_month_rounded,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'Attendance',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {
@@ -214,46 +212,23 @@ class DrawerPage extends StatelessWidget {
                     },
                   ),
                   const Divider(
-                    color: Colors.black,
+                    color: Color(0xff008f99),
                     thickness: 1,
                     indent: 20,
                     endIndent: 20,
                   ),
                   ListTile(
                     leading: const Icon(
-                      Icons.settings_outlined,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    title: const Text(
-                      'Settings',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SettingsStudent(),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
                       Icons.person_outlined,
                       size: 30,
-                      color: Colors.black,
+                      color: Color(0xff008f99),
                     ),
                     title: const Text(
                       'Profile',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Color(0xff008f99),
                       ),
                     ),
                     onTap: () {

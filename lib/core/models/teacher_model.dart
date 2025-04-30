@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class Teacher {
   final String username;
   final String avatarUrl;
@@ -22,7 +20,7 @@ class Teacher {
 
     // 3) Extract fields
     final username = flat['username'] as String? ?? '';
-    
+
     final avatarRaw = flat['avatarUrl'] ?? flat['avatar'] ?? flat['email'];
     String avatarUrl = '';
     if (avatarRaw is String) {

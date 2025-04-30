@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:edunourish/features/Parent/features/Exam/presentation/views/exam_screen.dart';
 import 'package:edunourish/features/student/screens/home/attendance_screen.dart';
-import 'package:edunourish/features/student/screens/home/exam_screen.dart';
+import 'package:edunourish/features/student/screens/home/exams_screen.dart';
+import 'package:edunourish/features/student/screens/home/food_place_screen.dart';
 import 'package:edunourish/features/student/screens/home/notifiactions_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/home_teacher.dart';
 import 'package:flutter/material.dart';
@@ -169,14 +168,14 @@ class _HomeStudentState extends State<HomeStudent> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ExamScreen(),
+                        builder: (context) => const ExamsScreen(),
                       ),
                     );
                   },
                 ),
                 GestureDetector(
                   child: _buildFeatureCard(
-                      "assets/student/Home_Student/Calendar.png", "Attendance"),
+                      "assets/student/Home_Student/appointment.png", "Attendance"),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -196,19 +195,19 @@ class _HomeStudentState extends State<HomeStudent> {
               children: [
                 GestureDetector(
                   child: _buildFeatureCard(
-                      "assets/student/Home_Student/Toast.png", "Food Place"),
+                      "assets/student/Home_Student/restaurant.png", "Food Place"),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Restaurant(),
+                        builder: (context) => const FoodPlaceScreen(),
                       ),
                     );
                   },
                 ),
                 GestureDetector(
                   child: _buildFeatureCard(
-                      "assets/student/Home_Student/TaskList.png",
+                      "assets/student/Home_Student/book-stack.png",
                       "My Subjects"),
                   onTap: () {
                     Navigator.push(
