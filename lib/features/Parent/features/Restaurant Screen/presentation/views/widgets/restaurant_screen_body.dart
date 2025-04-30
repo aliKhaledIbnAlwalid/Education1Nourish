@@ -1,6 +1,7 @@
 
 import 'package:edunourish/features/Parent/core/utils/assets.dart';
 import 'package:edunourish/core/utils/constants.dart';
+import 'package:edunourish/features/Parent/core/utils/styles.dart';
 import 'package:edunourish/features/Parent/core/widgets/base_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -91,21 +92,7 @@ class RestaurantScreenBodyState extends State<RestaurantScreenBody> {
       ],
       rating: 4.6,
     ),
-    // Meal(
-    //   name: 'Argentinian Beef Chimichurri',
-    //   description: 'Grilled grass-fed beef with fresh herb chimichurri sauce',
-    //   imageUrl: mealImage,
-    //   price: 34.50,
-    //   calories: 550,
-    //   preparationTime: 25,
-    //   ingredients: [
-    //     'Grass-fed beef',
-    //     'Chimichurri sauce',
-    //     'Roasted potatoes',
-    //     'Grilled vegetables'
-    //   ],
-    //   rating: 4.7,
-    // ),
+    
   ];
 
   @override
@@ -150,8 +137,8 @@ class RestaurantScreenBodyState extends State<RestaurantScreenBody> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.blue.shade800,
-            Colors.blue.shade500,
+            ourMainColor,
+            ourMainColor.withValues(alpha: 0.6),
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
@@ -266,10 +253,10 @@ class MealCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.blue.shade50,
+          color: ourMainColor.withValues(alpha: 0.1),
           boxShadow: [
             BoxShadow(
-              color: Colors.blue.shade100.withValues(alpha:  0.5),
+              color: ourMainColor.withValues(alpha:  0.2),
               blurRadius: 10,
               offset: const Offset(0, 5),
             )
@@ -299,11 +286,7 @@ class MealCard extends StatelessWidget {
                     Text(
                       meal.name,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[900],
-                      ),
+                      style: mainText14 ,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -315,34 +298,19 @@ class MealCard extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: Colors.blue.shade100,
+                            color: ourMainColor .withValues(alpha: 0.3),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
                             '\$${meal.price.toStringAsFixed(2)}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue[800],
+                              
                             ),
                           ),
                         ),
-                        const SizedBox(width: 8),
-                        Row(
-                          children: [
-                            const Icon(Icons.star,
-                                color: Colors.amber, size: 16),
-                            const SizedBox(width: 4),
-                            Text(
-                              meal.rating.toString(),
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.amber[800],
-                              ),
-                            ),
-                          ],
-                        ),
+                        
                       ],
                     ),
                   ],
