@@ -1,6 +1,6 @@
 import 'dart:async'; // استيراد مكتبة التعامل مع التدفقات الزمنية
 
-import 'package:edunourish/features/Parent/core/utils/constants.dart';
+import 'package:edunourish/core/utils/constants.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/bloc/bus_bloc.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/bloc/bus_state.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/presentation/views/widgets/bus_info.dart';
