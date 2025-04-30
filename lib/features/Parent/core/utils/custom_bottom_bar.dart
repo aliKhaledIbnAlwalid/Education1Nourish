@@ -1,8 +1,8 @@
+import 'package:edunourish/core/utils/constants.dart';
 import 'package:edunourish/features/Parent/core/utils/app_router.dart';
 import 'package:edunourish/features/Parent/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 class CustomBottomBar extends StatelessWidget {
   const CustomBottomBar({
@@ -22,10 +22,10 @@ class CustomBottomBar extends StatelessWidget {
               onPressed: () {
                 AppRouter.toListScreen(context);
               },
-              icon: SvgPicture.asset(
-                listIcon,
-                width: 32,
-                height: 32,
+              icon: const Icon(
+                Icons.view_list,
+                size: 33,
+                color: ourMainColor,
               ),
             ),
             IconButton(
@@ -35,26 +35,34 @@ class CustomBottomBar extends StatelessWidget {
               icon: const Icon(
                 Icons.directions_bus_sharp,
                 size: 33,
-                color: Colors.black,
+                color: ourMainColor,
               ),
             ),
             IconButton(
               onPressed: () {
                 AppRouter.toParentHome(context);
               },
-              icon: SvgPicture.asset(homeIconBottomBar),
+              icon: const Icon(
+                Icons.home_filled,
+                size: 33,
+                color: ourMainColor,
+              ),
             ),
             IconButton(
               onPressed: () {
                 AppRouter.toGradeScreen(context);
               },
-              icon: SvgPicture.asset('assets/parent/icons/Star.svg'),
+              icon: Image.asset(gradeImage, width: 30,height: 30,),
             ),
             IconButton(
               onPressed: () {
                 AppRouter.toSettingsScreen(context);
               },
-              icon: SvgPicture.asset(settingsBottomBar),
+              icon: const Icon(
+                Icons.settings,
+                size: 33,
+                color: ourMainColor,
+              ),
             ),
           ],
         ),

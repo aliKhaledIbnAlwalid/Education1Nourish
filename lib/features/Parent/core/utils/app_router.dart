@@ -59,4 +59,7 @@ abstract class AppRouter {
 
   static Future<T?> toRestaurantScreen<T>(BuildContext c) =>
       Navigator.push<T>(c, MaterialPageRoute(builder: (_) => const RestaurantScreen()));
+  static void toBack<T>(BuildContext c, [T? result]) =>
+    Navigator.pop<T>(c, result);
+  
 }

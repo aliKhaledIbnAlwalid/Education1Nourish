@@ -1,6 +1,6 @@
 
 import 'package:edunourish/features/Parent/core/utils/assets.dart';
-import 'package:edunourish/features/Parent/core/utils/constants.dart';
+import 'package:edunourish/core/utils/constants.dart';
 import 'package:edunourish/features/Parent/core/widgets/base_scaffold.dart';
 import 'package:edunourish/features/Parent/features/Teacher%20Screen/data/models/teacher_model.dart';
 

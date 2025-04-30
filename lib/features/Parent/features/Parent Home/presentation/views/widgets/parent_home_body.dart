@@ -15,7 +15,7 @@ class ParentHomeBody extends StatelessWidget {
         child: Column(
           children: [
             // News Box
-            ParentSlider(),
+            const ParentSlider(),
 
             // Cards Grid
             Expanded(
@@ -34,11 +34,8 @@ class ParentHomeBody extends StatelessWidget {
                     },
                     child: const BuildIconCard(
                         label: 'Teacher',
-                        imagePath: teacherHome,
-                        top: -60,
-                        left: 20,
-                        bottom: 40,
-                        right: 20),
+                        imagePath: theTeacherHome,
+                        ),
                   ),
                   InkWell(
                       onTap: () {
@@ -46,22 +43,16 @@ class ParentHomeBody extends StatelessWidget {
                       },
                       child: const BuildIconCard(
                           label: 'My child',
-                          imagePath: studentHome,
-                          top: -50,
-                          left: 20,
-                          bottom: 40,
-                          right: 20)),
+                          imagePath: theStudentHome,
+                          )),
                   InkWell(
                     onTap: () {
                       AppRouter.toRestaurantScreen(context);
                     },
                     child: const BuildIconCard(
                         label: 'Food Place',
-                        imagePath: restaurantHome,
-                        top: 0,
-                        left: 20,
-                        bottom: 40,
-                        right: 20),
+                        imagePath: theRestaurantHome,
+                        ),
                   ),
                   InkWell(
                     onTap: () {
@@ -69,11 +60,8 @@ class ParentHomeBody extends StatelessWidget {
                     },
                     child: const BuildIconCard(
                         label: 'Payment',
-                        imagePath: paymentHome,
-                        top: 10,
-                        left: 20,
-                        bottom: 50,
-                        right: 20),
+                        imagePath: thePaymentHome,
+                        ),
                   ),
                 ],
               ),

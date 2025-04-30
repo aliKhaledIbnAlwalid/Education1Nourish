@@ -1,6 +1,6 @@
 
 import 'package:edunourish/features/Parent/core/utils/assets.dart';
-import 'package:edunourish/features/Parent/core/utils/constants.dart';
+import 'package:edunourish/core/utils/constants.dart';
 import 'package:edunourish/features/Parent/features/Settings%20Screen/presentation/views/widgets/settings_app_bar.dart';
 import 'package:flutter/material.dart';
 
