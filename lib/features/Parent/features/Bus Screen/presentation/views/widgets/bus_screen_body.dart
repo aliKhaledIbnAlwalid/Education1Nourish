@@ -1,6 +1,7 @@
 import 'dart:async'; // استيراد مكتبة التعامل مع التدفقات الزمنية
 
 import 'package:edunourish/core/utils/constants.dart';
+import 'package:edunourish/features/Parent/core/widgets/base_scaffold.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/bloc/bus_bloc.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/bloc/bus_state.dart';
 import 'package:edunourish/features/Parent/features/Bus%20Screen/presentation/views/widgets/bus_info.dart';
@@ -31,87 +32,71 @@ class BusScreenBodyState extends State<BusScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity, // عرض كامل الشاشة
-        height: double.infinity, // ارتفاع كامل الشاشة
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              firstGradientColor,
-              secondGradientColor
-            ], // تدرج الألوان من الأعلى للأسفل
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
-        child: RefreshIndicator(
-          onRefresh: _handleRefresh, // ربط السحب مع الدالة
-          child: SingleChildScrollView(
-            physics:
-                const AlwaysScrollableScrollPhysics(), // للسماح بالتمرير حتى لو المحتوى صغير
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 50), // مسافة علوية ثابتة
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Center(
-                    child: Text(
-                      'Student Location', // عنوان القسم
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0), // حواف أفقية
-                  child: Card(
-                    elevation: 4, // الظل
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12), // زوايا مستديرة
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: SizedBox(
-                      height: 300, // ارتفاع ثابت للحاوية
-                      // هذا المفتاح يخبر فلاتر: «إذا تغيّر المفتاح، اعتبر هذا الودجت جديد ولا ترجع تستخدم الحالة القديمة.»
-                      child: LiveMap(key: ValueKey(_mapRefreshKey)),
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                      top: 30, left: 16), // مسافة من الأعلى واليسار
+    return BaseScaffold(
+      child: RefreshIndicator(
+        onRefresh: _handleRefresh, // ربط السحب مع الدالة
+        child: SingleChildScrollView(
+          physics:
+              const AlwaysScrollableScrollPhysics(), // للسماح بالتمرير حتى لو المحتوى صغير
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Center(
                   child: Text(
-                    'Bus schedules', // عنوان جدول المواعيد
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    'Student Location', // عنوان القسم
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                   ),
                 ),
-                BlocBuilder<BusBloc, BusState>(
-                  builder: (context, state) {
-                    if (state is BusLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (state is BusLoaded) {
-                      return BusInfo(bus: state.buses.first);
-                    } else if (state is BusError) {
-                      return Center(
-                        child: Text('Error:${state.message}'),
-                      );
-                    }
-                    return const Center(child: Text("try again later!"));
-                  },
-                ), // ويدجت جدول المواعيد
-              ],
-            ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0), // حواف أفقية
+                child: Container(
+                  height: 300, // ارتفاع ثابت للحاوية
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: ourMainColor,
+                      width: 3.0,
+                    ),
+                    borderRadius: BorderRadius.circular(12), // زوايا مستديرة
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10), // قليلاً أصغر من الإطار الخارجي
+                    child: LiveMap(key: ValueKey(_mapRefreshKey)),
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(
+                    top: 30, left: 16), // مسافة من الأعلى واليسار
+                child: Text(
+                  'Bus schedules', // عنوان جدول المواعيد
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+              ),
+              BlocBuilder<BusBloc, BusState>(
+                builder: (context, state) {
+                  if (state is BusLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is BusLoaded) {
+                    return BusInfo(bus: state.buses.first);
+                  } else if (state is BusError) {
+                    return Center(
+                      child: Text('Error:${state.message}'),
+                    );
+                  }
+                  return const Center(child: Text("try again later!"));
+                },
+              ), // ويدجت جدول المواعيد
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-
 
 class LiveMap extends StatefulWidget {
   const LiveMap({super.key});

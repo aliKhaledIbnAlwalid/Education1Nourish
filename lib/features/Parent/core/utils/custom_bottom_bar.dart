@@ -11,60 +11,73 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Container(
-        color: Colors.transparent,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: () {
-                AppRouter.toListScreen(context);
-              },
-              icon: const Icon(
-                Icons.view_list,
-                size: 33,
-                color: ourMainColor,
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 8,
+            offset: const Offset(0, -3),
+            spreadRadius: 0,
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Container(
+          color: Colors.transparent,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(
+                onPressed: () {
+                  AppRouter.toListScreen(context);
+                },
+                icon: const Icon(
+                  Icons.view_list,
+                  size: 33,
+                  color: ourMainColor,
+                ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                AppRouter.toBusScreen(context);
-              },
-              icon: const Icon(
-                Icons.directions_bus_sharp,
-                size: 33,
-                color: ourMainColor,
+              IconButton(
+                onPressed: () {
+                  AppRouter.toBusScreen(context);
+                },
+                icon: const Icon(
+                  Icons.directions_bus_sharp,
+                  size: 33,
+                  color: ourMainColor,
+                ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                AppRouter.toParentHome(context);
-              },
-              icon: const Icon(
-                Icons.home_filled,
-                size: 33,
-                color: ourMainColor,
+              IconButton(
+                onPressed: () {
+                  AppRouter.toParentHome(context);
+                },
+                icon: const Icon(
+                  Icons.home_filled,
+                  size: 33,
+                  color: ourMainColor,
+                ),
               ),
-            ),
-            IconButton(
-              onPressed: () {
-                AppRouter.toGradeScreen(context);
-              },
-              icon: Image.asset(gradeImage, width: 30,height: 30,),
-            ),
-            IconButton(
-              onPressed: () {
-                AppRouter.toSettingsScreen(context);
-              },
-              icon: const Icon(
-                Icons.settings,
-                size: 33,
-                color: ourMainColor,
+              IconButton(
+                onPressed: () {
+                  AppRouter.toGradeScreen(context);
+                },
+                icon: Image.asset(gradeImage, width: 30, height: 30),
               ),
-            ),
-          ],
+              IconButton(
+                onPressed: () {
+                  AppRouter.toSettingsScreen(context);
+                },
+                icon: const Icon(
+                  Icons.settings, 
+                  size: 33,
+                  color: ourMainColor,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

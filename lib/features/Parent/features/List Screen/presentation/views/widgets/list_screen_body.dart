@@ -1,5 +1,7 @@
-
+import 'package:edunourish/features/Parent/core/utils/app_router.dart';
 import 'package:edunourish/features/Parent/core/utils/assets.dart';
+import 'package:edunourish/core/utils/constants.dart';
+import 'package:edunourish/features/Parent/core/utils/styles.dart';
 import 'package:edunourish/features/Parent/core/widgets/base_scaffold.dart';
 import 'package:edunourish/features/Parent/features/Attendence%20Screen/presentation/views/attendence_screen.dart';
 import 'package:edunourish/features/Parent/features/Classes/presentation/views/classes_screen.dart';
@@ -15,218 +17,166 @@ class ListScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BaseScaffold(child: Column(
-        children: [
-          const Center(
-            child: CircleAvatar(
-              radius: 80,
-              backgroundColor: Colors.blue,
-              backgroundImage:
-                  AssetImage(teacherImage),
-            ),
-          ),
-          const SizedBox(height: 12),
-          const Text(
-            'Mohamed Hamdy',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-          const Text(
-            'MohamedHamdy@gamil.com',
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black,
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Divider(
-            color: Colors.black,
-            thickness: 1,
-            indent: 20,
-            endIndent: 20,
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: const Icon(
-                      Icons.people_outline,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    title: const Text(
-                      'My Teachers',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+    return BaseScaffold(
+      child: Container(
+        color: ourBackgroundColor,
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+                child: ListView(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, bottom: 15),
+                      child: Text(
+                        'Menu',
+                        style: textBold28,
                       ),
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TeacherScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.fastfood_outlined,
-                      size: 30,
-                      color: Colors.black,
+                    const SizedBox(height: 10),
+                    _buildSettingsCategory(title: 'Academic', icon: Icons.school_outlined),
+                    
+                    _buildSettingsTile(
+                      icon: Icons.people_outline,
+                      title: 'My Teachers',
+                      onTap: () {
+                        AppRouter.toTeacherScreen(context);
+                      },
                     ),
-                    title: const Text(
-                      'Restaurent',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                    
+                    _buildSettingsTile(
+                      icon: Icons.table_view_rounded,
+                      title: 'My Class Schedule',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ClassesScreen(),
+                          ),
+                        );
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RestaurantScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.table_view_rounded,
-                      size: 30,
-                      color: Colors.black,
+                    
+                    _buildSettingsTile(
+                      icon: Icons.book_outlined,
+                      title: 'Exams',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ExamScreen(),
+                          ),
+                        );
+                      },
                     ),
-                    title: const Text(
-                      'My Class Schedule',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                    
+                    _buildSettingsTile(
+                      icon: Icons.calendar_month_rounded,
+                      title: 'Attendance',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AttendenceScreen(),
+                          ),
+                        );
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ClassesScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  
-                  ListTile(
-                    leading: const Icon(
-                      Icons.book_outlined,
-                      size: 30,
-                      color: Colors.black,
+                    
+                    const SizedBox(height: 20),
+                    _buildSettingsCategory(title: 'Services', icon: Icons.room_service_outlined),
+                    
+                    _buildSettingsTile(
+                      icon: Icons.fastfood_outlined,
+                      title: 'Restaurant',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RestaurantScreen(),
+                          ),
+                        );
+                      },
                     ),
-                    title: const Text(
-                      'ُExams',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold),
+                    
+                    const SizedBox(height: 20),
+                    _buildSettingsCategory(title: 'Personal', icon: Icons.person_outline),
+                    
+                    _buildSettingsTile(
+                      icon: Icons.person_outlined,
+                      title: 'Profile',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ParentProfile(),
+                          ),
+                        );
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ExamScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.calendar_month_rounded,
-                      size: 30,
-                      color: Colors.black,
+                    
+                    _buildSettingsTile(
+                      icon: Icons.settings_outlined,
+                      title: 'Settings',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SettingsScreen(),
+                          ),
+                        );
+                      },
                     ),
-                    title: const Text(
-                      'Attendance',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AttendenceScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    color: Colors.black,
-                    thickness: 1,
-                    indent: 20,
-                    endIndent: 20,
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.settings_outlined,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    title: const Text(
-                      'Settings',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SettingsScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    leading: const Icon(
-                      Icons.person_outlined,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                    title: const Text(
-                      'Profile',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ParentProfile(),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
+    );
+  }
 
-      );
+  Widget _buildSettingsCategory({required String title, required IconData icon}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12, bottom: 8, top: 8),
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: Colors.grey[700],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSettingsTile({
+    required IconData icon,
+    required String title,
+    required VoidCallback onTap,
+    Widget? trailing,
+  }) {
+    return Card(
+      elevation: 0,
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: Colors.grey.withOpacity(0.1)),
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+        leading: Icon(icon, color: ourMainColor),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        trailing: trailing ?? const Icon(Icons.arrow_forward_ios, size: 16, color: ourMainColor),
+        onTap: onTap,
+      ),
+    );
   }
 }
-

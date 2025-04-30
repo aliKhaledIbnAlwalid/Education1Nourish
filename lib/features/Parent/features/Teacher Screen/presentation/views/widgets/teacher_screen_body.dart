@@ -96,7 +96,7 @@ class TeacherCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
               margin: const EdgeInsets.only(bottom: 10),
               decoration: BoxDecoration(
-                color: secondColor,
+                color: ourMainColor,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Text(
@@ -143,15 +143,7 @@ class TeacherCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            // // Teacher Description
-            // Text(
-            //   teacher.description,
-            //   style: TextStyle(
-            //     fontSize: 14,
-            //     color: Colors.grey.shade700,
-            //   ),
-            //   textAlign: TextAlign.center,
-            // ),
+            
           ],
         ),
       ),

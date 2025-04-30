@@ -1,3 +1,4 @@
+import 'package:edunourish/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         // from line 31 to 34 , who is added by mohamed
         theme: ThemeData(
-        scaffoldBackgroundColor:const Color(0xfff2f2f2),
+        scaffoldBackgroundColor:ourBackgroundColor,
         ),
         debugShowCheckedModeBanner: false,
         title: 'EduNourish',
