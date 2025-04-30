@@ -1,4 +1,3 @@
-import 'package:edunourish/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,8 +8,6 @@ import 'features/student/providers/student_provider.dart';
 import 'features/teacher/providers/teacher_provider.dart';
 import 'features/student/widgets/btm_nav_bar_student.dart';
 import 'features/teacher/widgets/btm_nav_bar.dart';
-import 'features/teacher/widgets/btm_nav_bar.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         // from line 31 to 34 , who is added by mohamed
         theme: ThemeData(
-        scaffoldBackgroundColor: ourBackgroundColor,
+        scaffoldBackgroundColor:const Color(0xfff2f2f2),
         ),
         debugShowCheckedModeBanner: false,
         title: 'EduNourish',
