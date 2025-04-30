@@ -1,4 +1,4 @@
-import 'package:edunourish/features/student/screens/home/profile_screen.dart';
+import 'package:edunourish/features/student/screens/list/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:edunourish/features/student/providers/student_provider.dart';
@@ -8,7 +8,7 @@ class FoodPlaceScreen extends StatefulWidget {
   const FoodPlaceScreen({Key? key}) : super(key: key);
 
   @override
-  State<FoodPlaceScreen> createState() => _FoodPlaceScreenState ();
+  State<FoodPlaceScreen> createState() => _FoodPlaceScreenState();
 }
 
 class _FoodPlaceScreenState extends State<FoodPlaceScreen>

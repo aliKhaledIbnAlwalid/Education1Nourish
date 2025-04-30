@@ -21,11 +21,11 @@ class Activities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffcdc9cf),
+      backgroundColor: Color(0xfff2f2f2),
       appBar: AppBar(
         title: const Text("Activities"),
         centerTitle: true,
-        backgroundColor: const Color(0xffcdc9cf),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
     leading: IconButton(
           icon: const Icon(Icons.notifications_none_outlined, size: 30),
           onPressed: () {
@@ -80,7 +80,7 @@ class CategoryCard extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: const Color(0xff98afb0),
+        color: const Color(0xFF008F99).withOpacity(0.7),
         child: Column(
           children: [
             ClipRRect(

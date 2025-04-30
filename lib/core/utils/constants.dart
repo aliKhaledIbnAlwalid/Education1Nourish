@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color ourMainColor = Color(0xFF008F99);
-const Color ourBackgroundColor =  const Color(0xfff2f2f2);
+const Color ourBackgroundColor =Color(0xfff2f2f2);
 
 final List<Color> gradientColors = [firstGradientColor, secondGradientColor];
 Color firstGradientColor = Colors.blue.shade200;

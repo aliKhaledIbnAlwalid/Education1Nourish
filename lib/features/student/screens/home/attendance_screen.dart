@@ -6,6 +6,7 @@ class Attendance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
         title: const Text(
           'Attendance',
@@ -16,7 +17,7 @@ class Attendance extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xffcdc9cf),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 30),
@@ -57,20 +58,7 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
   Widget build(BuildContext context) {
     double commonWidth = MediaQuery.of(context).size.width - 20;
 
-    return Stack(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xffcdc9cf),
-                Color(0xffe8e6e9),
-              ],
-            ),
-          ),
-        ),
+    return 
         SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Column(
@@ -81,14 +69,14 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
                 width: commonWidth,
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
-                  color: const Color(0xff98afb0),
+                  color: const Color(0xfffcfbfb),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: const [
                     BoxShadow(
-                      color: Color(0xff98afb0),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(0, 3),
+                      color: Color(0xFF008F99),
+                      spreadRadius: 3,
+                      blurRadius: 1,
+                     
                     ),
                   ],
                 ),
@@ -110,8 +98,8 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
                                   color: (day == 'Sat' || day == 'Sun')
-                                      ? const Color(0xffe8e6e9)
-                                      : Colors.grey.shade700,
+                                      ? const Color.fromARGB(255, 0, 0, 0)
+                                      : const Color.fromARGB(255, 0, 0, 0),
                                 ),
                               ),
                             );
@@ -123,16 +111,14 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
                   ),
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: moodContainer(commonWidth),
               ),
             ],
           ),
-        )
-      ],
-    );
+        );
   }
 
   Padding switchDaysSection() {
@@ -141,16 +127,8 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
         decoration: BoxDecoration(
-          color: const Color(0xff98afb0),
+          color: const Color(0xFF008F99),
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
-              spreadRadius: 2,
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
-          ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,12 +144,12 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
               child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xffe8e6e9),
+                  color: const Color(0xfff2f2f2),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Icon(
                   Icons.arrow_back_ios_rounded,
-                  color: Color(0xff98afb0),
+                  color: Color(0xFF008F99),
                   size: 18,
                 ),
               ),
@@ -180,32 +158,24 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xffe8e6e9), Color(0xffe8e6e9)],
+                  colors: [Color(0xfff2f2f2),Color(0xfff2f2f2),],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
                 ),
                 borderRadius: BorderRadius.circular(18),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xffe8e6e9).withOpacity(0.3),
-                    spreadRadius: 1,
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Icon(Icons.calendar_today_rounded,
-                      color: Colors.black, size: 18),
+                      color:Color(0xFF008F99), size: 18),
                   const SizedBox(width: 8),
                   Text(
                     '${_getMonthName(currentMonth.month)} ${currentMonth.year}',
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color:Color(0xFF008F99),
                     ),
                   ),
                 ],
@@ -222,12 +192,12 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
               child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xffe8e6e9),
+                  color: const Color(0xfff2f2f2),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Icon(
                   Icons.arrow_forward_ios_rounded,
-                  color: Color(0xff98afb0),
+                  color: Color(0xFF008F99),
                   size: 18,
                 ),
               ),
@@ -237,21 +207,21 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
       ),
     );
   }
-
+  
   Container moodContainer(double commonWidth) {
     return Container(
       width: commonWidth,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
-        color: const Color(0xff98afb0),
+        color: const Color(0xfff2f2f2),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 10,
-            offset: const Offset(0, 3),
+            color: Color(0xFF008F99),
+            spreadRadius: 3,
+            blurRadius: 1,
+           
           ),
         ],
       ),
@@ -261,7 +231,7 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             decoration: BoxDecoration(
-              color: const Color(0xffe8e6e9),
+              color: const Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
@@ -269,7 +239,7 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
                   ? '$selectedDay ${_getMonthName(currentMonth.month)} ${currentMonth.year}'
                   : 'Select a date',
               style: const TextStyle(
-                color: Colors.black,
+                color:const Color(0xFF008F99),
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -277,35 +247,35 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
           ),
           const SizedBox(height: 8),
           Container(
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: isCame ? const Color(0xFFE6F7FF) : const Color(0xFFFFF0F0),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: (isCame ? Colors.blue : Colors.red).withOpacity(0.1),
-                  spreadRadius: 5,
-                  blurRadius: 15,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
+            padding: const EdgeInsets.all(16),
+            // decoration: BoxDecoration(
+            //   color: isCame ?  const Color(0xfff2f2f2): const Color.fromARGB(255, 255, 0, 0),
+            //   shape: BoxShape.circle,
+            //   boxShadow: [
+            //     BoxShadow(
+            //       color: (isCame ?  const Color(0xFF008F99) : Colors.red),
+            //       spreadRadius: 5,
+            //       blurRadius: 15,
+            //       offset: const Offset(0, 5),
+            //     ),
+            //   ],
+            // ),
             child: Text(
               isCame ? '😀' : '😔',
-              style: const TextStyle(fontSize: 64),
+              style: const TextStyle(fontSize: 80),
             ),
           ),
           const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
             decoration: BoxDecoration(
-              color: const Color(0xffe8e6e9),
+           color:Color.fromARGB(255, 255, 255, 255),
               borderRadius: BorderRadius.circular(30),
             ),
             child: Text(
               isCame ? 'Present' : 'Absent',
               style: const TextStyle(
-                color: Colors.black,
+                 color:Color(0xFF008F99),
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
               ),
@@ -390,10 +360,10 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isSelected
-              ? const Color(0xffe8e6e9)
+              ? const Color(0xFF008F99).withOpacity(0.6)
               : isToday
                   ? const Color(0xFFF0EDFF)
-                  : Colors.transparent,
+                  : const Color.fromARGB(0, 255, 255, 255),
           shape: BoxShape.circle,
           border: isToday && !isSelected
               ? Border.all(color: const Color(0xFF7B5EF8), width: 1.5)
@@ -401,7 +371,7 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: const Color(0xFF7B5EF8).withOpacity(0.3),
+                    color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 1,
                     blurRadius: 4,
                     offset: const Offset(0, 2),
@@ -413,9 +383,9 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
           text,
           style: TextStyle(
             color: isSelected
-                ? Colors.black
+                ? const Color.fromARGB(255, 255, 255, 255)
                 : isToday
-                    ? const Color(0xFF7B5EF8)
+                    ? const Color.fromARGB(255, 15, 15, 15)
                     : (text.isEmpty ? Colors.transparent : Colors.black87),
             fontWeight:
                 isSelected || isToday ? FontWeight.bold : FontWeight.normal,

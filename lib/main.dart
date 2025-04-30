@@ -12,7 +12,7 @@ import 'features/teacher/widgets/btm_nav_bar.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
-  final seenOnboarding = prefs.getBool('seenOnboarding') ?? true;
+  final seenOnboarding = prefs.getBool('seenOnboarding') ?? false;
   runApp(MyApp(seenOnboarding: seenOnboarding));
 }
 

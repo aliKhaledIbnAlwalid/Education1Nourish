@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:edunourish/features/student/screens/home/exam_screen.dart';
+import 'package:edunourish/features/student/screens/home/exams_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/classes_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/notifiactions_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/students_screen.dart';
