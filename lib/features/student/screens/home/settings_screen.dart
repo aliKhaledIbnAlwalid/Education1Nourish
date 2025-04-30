@@ -5,16 +5,11 @@ class SettingsStudent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor:Color.fromARGB(255, 217, 215, 215),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text('Settings',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-      ),
-      body: Column(
+    return Column(
         children: [
+         const SizedBox(
+            height: 20,
+          ),
           const CircleAvatar(
             radius: 60,
             backgroundImage: AssetImage("assets/face.png"),
@@ -30,7 +25,7 @@ class SettingsStudent extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             decoration: BoxDecoration(
               color: const Color(0xff008f99),
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: const Text(
               "Mario Samy",
@@ -63,8 +58,7 @@ class SettingsStudent extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 
   Widget buildSettingsTile(BuildContext context, IconData icon, String title) {
@@ -72,8 +66,8 @@ class SettingsStudent extends StatelessWidget {
       leading: Icon(icon, color: const Color(0xff008f99)),
       title: Text(
         title,
-        style: TextStyle(
-          color: Color(0xff008f99),
+        style: const TextStyle(
+          color:  Color(0xff008f99),
         ),
       ),
       trailing: const Icon(

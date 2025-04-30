@@ -1,4 +1,4 @@
- import 'package:edunourish/core/models/news.dart';
+import 'package:edunourish/core/models/news.dart';
 import 'package:edunourish/features/student/providers/student_provider.dart';
 import 'package:edunourish/features/student/screens/home/notifiactions_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class Activities extends StatelessWidget {
     {'title': 'concert', 'image': "assets/student/Home_Student/Parties.png"},
   ];
 
-   Activities({super.key});
+  Activities({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class Activities extends StatelessWidget {
         title: const Text("Activities"),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-    leading: IconButton(
+        leading: IconButton(
           icon: const Icon(Icons.notifications_none_outlined, size: 30),
           onPressed: () {
             Navigator.push(

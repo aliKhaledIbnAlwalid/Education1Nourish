@@ -42,7 +42,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
     }
   }
 
-  void _showSettings() {
+void _showSettings() {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -50,7 +50,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (_) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.7,
+        height: MediaQuery.of(context).size.height * 0.6,
         child: const SettingsStudent(),
       ),
     );
