@@ -1,6 +1,6 @@
 import 'package:edunourish/core/models/news.dart';
 import 'package:edunourish/features/student/providers/student_provider.dart';
-import 'package:edunourish/features/student/screens/home/notifiactions_screen.dart';
+import 'package:edunourish/features/student/screens/home/notifiactions_student_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +21,12 @@ class Activities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff2f2f2),
+      backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
-        title: const Text("Activities"),
+        title: const Text(
+          "Activities",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: IconButton(
@@ -32,7 +35,7 @@ class Activities extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const NotificationsScreen(),
+                builder: (context) => NotificationsStudentScreen(),
               ),
             );
           },
@@ -69,7 +72,6 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigate to LoadingScreen with category title
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -77,18 +79,22 @@ class CategoryCard extends StatelessWidget {
           ),
         );
       },
-      child: Card(
+      child:
+       Card(
         margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        color: const Color(0xFF008F99).withOpacity(0.7),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        color: const Color.fromARGB(255, 142, 225, 234),
+        
         child: Column(
           children: [
+             const SizedBox(height: 30),
             ClipRRect(
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10)),
+                  const BorderRadius.vertical(top: Radius.circular(30)),
+                  
               child: Image.asset(
                 image,
-                height: 180,
+                height: 250,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
@@ -107,6 +113,8 @@ class CategoryCard extends StatelessWidget {
 }
 
 // ---------- Loading Screen ----------
+
+
 class LoadingScreen extends StatefulWidget {
   final String title;
 
@@ -135,21 +143,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff2f2f2),
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.green,
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: const BackButton(),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Loading...", style: TextStyle(fontSize: 16)),
-            const SizedBox(height: 20),
+            Text("Loading...", style: TextStyle(fontSize: 16)),
+            SizedBox(height: 20),
             LinearProgressIndicator(
               minHeight: 4,
-              valueColor: const AlwaysStoppedAnimation<Color>(Colors.lightBlue),
-              backgroundColor: Colors.green.shade200,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+              backgroundColor: Color.fromARGB(255, 255, 255, 255),
             ),
           ],
         ),

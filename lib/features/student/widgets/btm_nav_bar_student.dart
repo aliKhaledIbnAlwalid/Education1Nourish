@@ -18,9 +18,11 @@ class BtmNavBarStudent extends StatefulWidget {
 class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
   int _selectedIndex = 2;
 
+  // We have exactly 4 pages here; the 5th BottomNav item (index=4)
+  // is “Settings” which we handle specially.
   final List<Widget> _pages = [
     const DrawerPage(),
-    MyClassSchedule(),
+    ClassScheduleStudent(),
     const HomeStudent(),
     Activities(),
   ];
@@ -28,7 +30,7 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
   @override
   void initState() {
     super.initState();
-    // Defer your initial data load until after the first frame:
+    // Load student data once after first frame:
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<StudentProvider>().loadInitialData();
     });
@@ -36,13 +38,14 @@ class _BtmNavBarStudentState extends State<BtmNavBarStudent> {
 
   void _onTap(int index) {
     if (index == 4) {
+      // Show settings modal instead of changing page
       _showSettings();
     } else {
       setState(() => _selectedIndex = index);
     }
   }
 
-void _showSettings() {
+  void _showSettings() {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -58,30 +61,44 @@ void _showSettings() {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        elevation: 0,
-        currentIndex: _selectedIndex,
-        onTap: _onTap,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xff008f99),
-        selectedLabelStyle:
-            const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        unselectedLabelStyle: const TextStyle(fontSize: 14),
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.view_list_rounded), label: 'List'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.table_view_rounded), label: 'Schedule'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.sports_gymnastics_rounded), label: 'Activities'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings_rounded), label: 'Settings'),
-        ],
+    return WillPopScope(
+      // Prevent “back” from popping this route
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: _pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          currentIndex: _selectedIndex,
+          onTap: _onTap,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: const Color(0xff008f99),
+          selectedLabelStyle:
+              const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          unselectedLabelStyle: const TextStyle(fontSize: 14),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.view_list_rounded),
+              label: 'List',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.table_view_rounded),
+              label: 'Schedule',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.sports_gymnastics_rounded),
+              label: 'Activities',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_rounded),
+              label: 'Settings',
+            ),
+          ],
+        ),
       ),
     );
   }

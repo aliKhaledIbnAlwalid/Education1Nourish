@@ -33,7 +33,7 @@ class _BtmNavBarTeacherState extends State<BtmNavBarTeacher> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.9,
+        height: MediaQuery.of(context).size.height * 0.6,
         child: const SettingsTeacher(),
       ),
     );

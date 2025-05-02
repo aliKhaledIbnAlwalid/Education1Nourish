@@ -26,7 +26,7 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
       duration: const Duration(milliseconds: 1000),
     );
     _slideAnim = Tween<Offset>(
-      begin: const Offset(0, 1),
+      begin: const Offset(0, 7),
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _animController,
@@ -67,8 +67,84 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
             children: [
               _buildAppBar(),
               const SizedBox(height: 20),
-              _buildSearchField(),
-              const SizedBox(height: 20),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+                decoration: BoxDecoration(
+                  color: const Color(0xffc4e9ec),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Title with highlighted word
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Discover ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          TextSpan(
+                            text: 'Delicious ',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          TextSpan(
+                            text: 'Meals',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                  color: const Color.fromARGB(255, 0, 0, 0),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    // Subtitle
+                    Text(
+                      'Culinary masterpieces crafted with passion and precision',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Color(0xff171d21),
+                            fontSize: 14,
+                          ),
+                    ),
+                    const SizedBox(height: 20),
+                    // Search field
+                    Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: TextField(
+                          onChanged: (v) => setState(() => searchText = v),
+                          decoration: const InputDecoration(
+                            hintText: "Search dishes, healthy food...",
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: Icon(Icons.mic),
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.all(15),
+                          ),
+                        )),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
               Expanded(
                 child: filtered.isEmpty
                     ? _buildNoResults()
@@ -110,9 +186,10 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
               context,
               MaterialPageRoute(builder: (_) => const ProfilePageStudent()),
             ),
-            child: CircleAvatar(
-              backgroundColor: Colors.grey.shade300,
-              child: const Icon(Icons.person),
+            child: const Image(
+              image: AssetImage('assets/Intro_Screen_login/EduIcon.png'),
+              height: 50,
+              width: 50,
             ),
           ),
         ],
@@ -186,8 +263,7 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 child: Text(
                   place.description ?? '',
                   style: const TextStyle(fontSize: 14, color: Colors.black54),

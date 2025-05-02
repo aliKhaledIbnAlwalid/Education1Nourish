@@ -21,7 +21,10 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
     }
 
     return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: const Text('Teachers'),
         leading: BackButton(onPressed: () => Navigator.pop(context)),
       ),
@@ -36,7 +39,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       hintText: 'Search',
                       prefixIcon: const Icon(Icons.search),
                       filled: true,
-                      fillColor: Colors.grey.shade200,
+                      fillColor: const Color.fromARGB(255, 255, 255, 255),
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 16),
                       border: OutlineInputBorder(
@@ -78,10 +81,10 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
           onTap: () {},
           borderRadius: BorderRadius.circular(12),
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.blue.shade100),
+              color: const Color.fromARGB(255, 255, 255, 255),
+            
               borderRadius: BorderRadius.circular(12),
             ),
             child: Row(
@@ -99,7 +102,7 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        t.username,
+                        "Mr. ${t.username}",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -107,10 +110,10 @@ class _TeachersListScreenState extends State<TeachersListScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        t.subject,
-                        style: TextStyle(
+                        '${t.subject} Teacher',
+                        style: const TextStyle(
                           fontSize: 14,
-                          color: Colors.grey.shade600,
+                          color: Color(0xff969696),
                         ),
                       ),
                     ],

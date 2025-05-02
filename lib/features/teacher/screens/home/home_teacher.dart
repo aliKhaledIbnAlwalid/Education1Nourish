@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:edunourish/features/student/screens/home/exams_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/classes_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/notifiactions_screen.dart';
 import 'package:edunourish/features/teacher/screens/home/students_screen.dart';
@@ -8,13 +7,13 @@ import 'package:edunourish/features/teacher/screens/list/exam_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class NewsPage extends StatelessWidget {
+class NewsPageTeacher extends StatelessWidget {
   final String title;
   final String subtitle;
   final String imagePath;
   final String details;
 
-  const NewsPage({
+  const NewsPageTeacher({
     super.key,
     required this.title,
     required this.subtitle,
@@ -185,7 +184,7 @@ class _HomeTeacherState extends State<HomeTeacher> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => NewsPage(
+                                builder: (context) => NewsPageTeacher(
                                   title: 'News Item $index',
                                   subtitle: 'Subtitle for news item $index',
                                   imagePath:

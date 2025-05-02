@@ -23,13 +23,14 @@ class ClassGridScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           'Classes',
-          style: TextStyle(color: Colors.teal, fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color(0xff008f99), fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xffcdc9cf),
+        backgroundColor: const Color(0xfff2f2f2),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 30),
@@ -61,14 +62,14 @@ class ClassGridScreen extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red),
+                  border: Border.all(color: Colors.teal),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: const EdgeInsets.all(12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.class_, size: 48, color: Colors.teal),
+                    Icon(Icons.school, size: 40, color: Colors.teal),
                     const SizedBox(height: 10),
                     Text(
                       classData['name']!,
