@@ -53,7 +53,7 @@ class _NotificationsStudentScreenState
       appBar: AppBar(
         title: const Text(
           'Notifiactions  ',
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,

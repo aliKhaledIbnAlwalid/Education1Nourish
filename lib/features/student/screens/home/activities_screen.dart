@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 
 class Activities extends StatelessWidget {
   final List<Map<String, String>> categories = [
-    {'title': 'general', 'image': "assets/student/Home_Student/General.png"},
+    {'title': 'general', 'image': "assets/student/Home_Student/general.jpg"},
     {
       'title': 'competition',
-      'image': "assets/student/Home_Student/Competitons.png"
+      'image': "assets/student/Home_Student/competition.jpg"
     },
     {'title': 'trip', 'image': "assets/student/Home_Student/Trips.png"},
     {'title': 'concert', 'image': "assets/student/Home_Student/Parties.png"},
@@ -25,7 +25,7 @@ class Activities extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Activities",
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -81,28 +81,25 @@ class CategoryCard extends StatelessWidget {
       },
       child:
        Card(
-        margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        color: const Color.fromARGB(255, 142, 225, 234),
+        margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+      //  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        color: Colors.white.withOpacity(0.2),
         
         child: Column(
           children: [
              const SizedBox(height: 30),
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(30)),
-                  
-              child: Image.asset(
-                image,
-                height: 250,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+            Image.asset(
+              image,
+              height: 250,
+             width: double.infinity,
+              fit: BoxFit.cover,
             ),
             const SizedBox(height: 8),
             Text(
               title,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Color(0xff008f99),
+                fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
           ],
@@ -143,9 +140,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff2f2f2),
+      backgroundColor: Color.fromARGB(255, 223, 222, 222),
       appBar: AppBar(
-        title: Text(widget.title),
+        centerTitle: true,
+        title: Text(widget.title,  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         leading: const BackButton(),
       ),
@@ -186,7 +184,9 @@ class NewsScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 223, 222, 222),
       appBar: AppBar(
+        
         leading: const BackButton(),
         title: Text(
           category,
@@ -194,7 +194,7 @@ class NewsScreen extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
       body: ListView.builder(
@@ -229,10 +229,11 @@ class _NewsCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              article.type,
+              article.title,
               style: const TextStyle(
-                color: Colors.cyan,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
+                fontSize: 20
               ),
             ),
           ),
@@ -255,7 +256,9 @@ class _NewsCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: Text(
               DateFormat.yMMMd().format(article.date),
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13, color: Colors.teal),
             ),
           ),
         ],

@@ -101,7 +101,7 @@ class CalendarScreen extends StatelessWidget {
               elevation: 0,
               centerTitle: true,
               title:
-                  const Text('Calendar', style: TextStyle(color: Colors.black)),
+                  const Text('Calendar',   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back, size: 30),
                 onPressed: () {

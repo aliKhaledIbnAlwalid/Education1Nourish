@@ -1,4 +1,4 @@
-import 'package:edunourish/features/student/screens/list/profile_screen.dart';
+import 'package:edunourish/features/student/screens/list/profile_student_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:edunourish/features/student/providers/student_provider.dart';
@@ -180,11 +180,11 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
             onPressed: () => Navigator.pop(context),
           ),
           const Text("Food Place",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
           GestureDetector(
             onTap: () => Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (_) => const ProfilePageStudent()),
+              MaterialPageRoute(builder: (_) => const ProfileScreenStudent()),
             ),
             child: const Image(
               image: AssetImage('assets/Intro_Screen_login/EduIcon.png'),
@@ -292,7 +292,7 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
             child: Column(
               children: [
                 Container(
-                  width: 80,
+                  width: 70,
                   height: 4,
                   decoration: BoxDecoration(
                     color: const Color(0xff008f99),
@@ -300,34 +300,39 @@ class _FoodPlaceScreenState extends State<FoodPlaceScreen>
                   ),
                 ),
                 const SizedBox(height: 12),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.network(
-                    place.photo ?? '',
-                    height: 400,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) =>
-                        const Icon(Icons.error, size: 80, color: Colors.red),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  place.name ?? '',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
                 Expanded(
                   child: SingleChildScrollView(
-                    child: Text(
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.network(
+                            place.photo ?? '',
+                            height: 400,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorBuilder: (_, __, ___) =>
+                                const Icon(Icons.error, size: 80, color: Colors.red),
+                          ),
+                        ),
+                          const SizedBox(height: 16),
+                    Text(
+                      place.name ?? '',
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
                       place.description ?? '',
                       style: const TextStyle(fontSize: 16),
                       textAlign: TextAlign.center,
                     ),
+                    const SizedBox(height: 16),
+                      ],
+                    ),
                   ),
                 ),
-                const SizedBox(height: 16),
+              
               ],
             ),
           ),

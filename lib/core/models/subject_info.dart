@@ -1,6 +1,3 @@
-// Api: /api/subjects/
-// grade level if it doesn't exist, change to ENUM
-// semester if it doesn't exist, change to ENUM
 class SubjectInfo {
   // final String subjectId; // may be not use
   final String name;

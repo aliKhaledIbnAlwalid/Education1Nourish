@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:edunourish/features/student/providers/student_provider.dart';
 
-class ProfilePageStudent extends StatelessWidget {
-  const ProfilePageStudent({Key? key}) : super(key: key);
+class ProfileScreenStudent extends StatelessWidget {
+  const ProfileScreenStudent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,20 +14,19 @@ class ProfilePageStudent extends StatelessWidget {
     final p = prov.profile!;
 
     return Scaffold(
-      
       extendBodyBehindAppBar: true,
       backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
         title: const Text(
           'Profile',
           style: TextStyle(
-            fontSize: 25,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Color(0xff1a1a1a),
           ),
         ),
         centerTitle: true,
-        backgroundColor:Colors.white,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 30),
@@ -125,7 +124,7 @@ class ProfileInfoRow extends StatelessWidget {
           Text(title,
               style: const TextStyle(
                 fontSize: 16,
-                color: Color(0xff1a1a1a),
+                color: Color(0xff008f99),
               )),
           Text(value,
               style: const TextStyle(

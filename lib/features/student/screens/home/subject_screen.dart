@@ -1,3 +1,278 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:edunourish/features/student/providers/student_provider.dart';
+import 'package:edunourish/core/models/subject_info.dart';
+
+class SubjectScreen extends StatelessWidget {
+  const SubjectScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final prov = context.watch<StudentProvider>();
+
+    // 1) loading
+    if (prov.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final subjects = prov.subjects;
+    // 2) empty state
+    if (subjects.isEmpty) {
+      return const Center(child: Text('No subjects available.'));
+    }
+
+    return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        title: const Text(
+          'Subjects',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            const SizedBox(height: 20),
+            _buildSearchField(),
+            const SizedBox(height: 20),
+            // 3) grid of subjects
+            Expanded(
+              child: GridView.builder(
+                itemCount: subjects.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.8,
+                ),
+                itemBuilder: (ctx, i) => _buildSubjectCard(
+                  context,
+                  subjects[i],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSearchField() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: const TextField(
+        decoration: InputDecoration(
+          hintText: "Search subjects…",
+          prefixIcon: Icon(Icons.search),
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(15),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSubjectCard(BuildContext context, SubjectInfo s) {
+    IconData icon;
+    switch (s.category.toLowerCase()) {
+      case 'mathematics':
+        icon = Icons.calculate;
+        break;
+      case 'science':
+        icon = Icons.science;
+        break;
+      case 'english':
+        icon = Icons.language;
+        break;
+      case 'arabic':
+        icon = Icons.language;
+        break;
+      case 'ict':
+        icon = Icons.computer;
+        break;
+      case 'pe':
+        icon = Icons.sports_soccer;
+        break;
+      case 're':
+        icon = Icons.self_improvement;
+        break;
+      default:
+        icon = Icons.book;
+    }
+
+    return Card(
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 12,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => SubjectDetailScreen(subject: s),
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // icon at top
+            Expanded(
+              child: Center(
+                child: Icon(icon, size: 60, color: const Color(0xff008f99)),
+              ),
+            ),
+
+            // subject name
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                textAlign: TextAlign.center,
+                s.category,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            // optional description
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            //   child: Text(
+            //     s.description,
+            //     style: const TextStyle(fontSize: 14, color: Colors.black54),
+            //     maxLines: 2,
+            //     overflow: TextOverflow.ellipsis,
+            //   ),
+            // ),
+            const SizedBox(height: 8),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SubjectDetailScreen extends StatelessWidget {
+  final SubjectInfo subject;
+  const SubjectDetailScreen({Key? key, required this.subject})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    Color _categoryColor(String cat) {
+      switch (cat.toLowerCase()) {
+        case 'arabic':
+          return Colors.red.shade300;
+        case 'mathematics':
+          return Colors.blue.shade200;
+        case 'science':
+          return Colors.green.shade200;
+        default:
+          return Colors.grey.shade300;
+      }
+    }
+
+    final catColor = _categoryColor(subject.category);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        leading: BackButton(color: Colors.black),
+        title: Text(subject.name, style: const TextStyle(color: Colors.black)),
+      ),
+      backgroundColor: Colors.grey.shade100,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  color: catColor, borderRadius: BorderRadius.circular(16)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(subject.name,
+                      style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white)),
+                  const SizedBox(height: 4),
+                  Text(subject.category,
+                      style: const TextStyle(color: Colors.white70)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            // Details Card
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _infoRow(Icons.numbers_rounded, 'Code', subject.code),
+                    _infoRow(Icons.school, 'Grade Level', subject.gradeLevel),
+                    _infoRow(
+                        Icons.calendar_today, 'Semester', subject.semester),
+                    const SizedBox(height: 12),
+                    const Text('Description',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    Text(subject.description,
+                        style: const TextStyle(fontSize: 14, height: 1.5)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _infoRow(IconData icon, String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        children: [
+          Icon(icon, size: 20, color: Colors.grey.shade700),
+          const SizedBox(width: 8),
+          Text('$label:', style: const TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(width: 4),
+          Expanded(child: Text(value)),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import 'package:flutter/material.dart';
 
 // import 'package:http/http.dart' as http;
@@ -209,10 +484,6 @@
 //   }
 // }
 
-
-
-
-
 // old code UI
 
 // import 'dart:convert';
@@ -406,248 +677,3 @@
 //     );
 //   }
 // }
-
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:edunourish/features/student/providers/student_provider.dart';
-import 'package:edunourish/core/models/subject_info.dart';
-import 'package:edunourish/features/student/screens/home/profile_screen.dart';
-
-class SubjectScreen extends StatelessWidget {
-  const SubjectScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final prov = context.watch<StudentProvider>();
-
-    // 1) loading
-    if (prov.isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    final subjects = prov.subjects;
-    // 2) empty state
-    if (subjects.isEmpty) {
-      return const Center(child: Text('No subjects available.'));
-    }
-
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Background gradient
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xffcdc9cf), Color(0xffe8e6e9)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  _buildAppBar(context),
-                  const SizedBox(height: 20),
-                  _buildSearchField(),
-                  const SizedBox(height: 20),
-                  // 3) grid of subjects
-                  Expanded(
-                    child: GridView.builder(
-                      itemCount: subjects.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 0.8,
-                      ),
-                      itemBuilder: (ctx, i) => _buildSubjectCard(
-                        context,
-                        subjects[i],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAppBar(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        // back
-        IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        const Text(
-          "Subjects",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
-        // profile
-        GestureDetector(
-          child: CircleAvatar(
-            backgroundColor: Colors.grey.shade300,
-            child: const Icon(Icons.person, color: Colors.black54),
-          ),
-          onTap: () => Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const ProfilePageStudent(),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSearchField() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
-      ),
-      child: const TextField(
-        decoration: InputDecoration(
-          hintText: "Search subjects…",
-          prefixIcon: Icon(Icons.search),
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.all(15),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSubjectCard(BuildContext context, SubjectInfo s) {
-    IconData icon;
-    switch (s.category.toLowerCase()) {
-      case 'math':
-        icon = Icons.calculate;
-        break;
-      case 'science':
-        icon = Icons.science;
-        break;
-      case 'english':
-        icon = Icons.language;
-        break;
-      case 'arabic':
-        icon = Icons.translate;
-        break;
-      case 'ict':
-        icon = Icons.computer;
-        break;
-      case 'pe':
-        icon = Icons.sports_soccer;
-        break;
-      case 're':
-        icon = Icons.self_improvement;
-        break;
-      default:
-        icon = Icons.book;
-    }
-
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 4,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(15),
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => SubjectDetailScreen(subject: s),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // icon at top
-            Expanded(
-              child: Center(
-                child: Icon(icon, size: 48, color: Colors.blueGrey),
-              ),
-            ),
-            const SizedBox(height: 8),
-            // subject name
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(
-                s.name,
-                style: const TextStyle(
-                    fontSize: 16, fontWeight: FontWeight.bold),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            // optional description
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: Text(
-                s.description,
-                style:
-                    const TextStyle(fontSize: 14, color: Colors.black54),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            const SizedBox(height: 8),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-class SubjectDetailScreen extends StatelessWidget {
-  final SubjectInfo subject;
-
-  const SubjectDetailScreen({Key? key, required this.subject})
-      : super(key: key);
-
-  Widget _infoRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('$label:', style: const TextStyle(fontWeight: FontWeight.w600)),
-          const SizedBox(width: 8),
-          Expanded(child: Text(value)),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(subject.name)),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _infoRow('Code', subject.code),
-            _infoRow('Category', subject.category),
-            _infoRow('Grade Level', subject.gradeLevel),
-            _infoRow('Semester', subject.semester),
-            const SizedBox(height: 12),
-            const Text('Description:',
-                style: TextStyle(fontWeight: FontWeight.w600)),
-            const SizedBox(height: 4),
-            Text(subject.description),
-          ],
-        ),
-      ),
-    );
-  }
-}

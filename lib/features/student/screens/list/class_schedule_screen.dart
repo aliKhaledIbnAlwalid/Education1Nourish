@@ -20,16 +20,21 @@ class ClassScheduleStudent extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        title: const Text(
+          'Class Schedule',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff1a1a1a),
+          ),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.notifications_none_outlined, size: 30),
+          icon: const Icon(Icons.arrow_back, size: 30),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => NotificationsStudentScreen(),
-              ),
-            );
+            Navigator.pop(context);
           },
         ),
         actions: const [
@@ -48,12 +53,6 @@ class ClassScheduleStudent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
-              child: Text(
-                "Class Schedule",
-                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
               child: TextField(
@@ -117,13 +116,15 @@ class ClassScheduleStudent extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
+final List<List<String>> scheduleData = [
+  ["Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  ["8:30", "Math", "English", "Arabic", "RE", "ICT", "PE"],
+  ["9:50", "Math", "English", "Science", "ICT", "Math", "RE"],
+  ["10:10", "Science", "English", "Arabic", "Math", "PE", "ICT"],
+  ["11:30", "RE", "ICT", "Science", "Math", "English", "Arabic"],
+  ["12:50", "Break", "Break", "Break", "Break", "Break", "Break"],
+  ["2:30", "Math", "English", "Science", "Arabic", "PE", "ICT"],
+];
 
 
 

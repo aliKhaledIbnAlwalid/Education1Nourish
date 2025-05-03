@@ -46,16 +46,17 @@ class _StudentsScreenState extends State<StudentsScreen> {
           selectedClass == 'All Students' || student['class'] == selectedClass;
       return nameMatch && classMatch;
     }).toList();
-
     return Scaffold(
+      backgroundColor: const Color(0xfff2f2f2),
       appBar: AppBar(
+        
         title: const Text(
           'Students',
           style: TextStyle(
-              color: Colors.teal, fontSize: 25, fontWeight: FontWeight.bold),
+              color: Color.fromARGB(255, 0, 0, 0), fontSize: 25, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xffcdc9cf),
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, size: 30),
@@ -78,6 +79,7 @@ class _StudentsScreenState extends State<StudentsScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
+              
               onChanged: (value) {
                 setState(() {
                   searchQuery = value;

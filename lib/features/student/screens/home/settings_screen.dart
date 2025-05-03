@@ -1,4 +1,6 @@
+import 'package:edunourish/features/auth/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsStudent extends StatelessWidget {
   const SettingsStudent({super.key});
@@ -19,11 +21,10 @@ class SettingsStudent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        const Text("Setings",
-            style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontSize: 25,
-                fontWeight: FontWeight.bold)),
+        const Text(
+          "Setings",
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 20),
         Expanded(
           child: Container(
@@ -84,8 +85,14 @@ class SettingsStudent extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.white),
                     ),
-                    onTap: () {
-                      // logout logic
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.clear();
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (_) => const LoginScreen(role: 'student')),
+                        (route) => false,
+                      );
                     },
                   ),
                 ),
@@ -146,7 +153,7 @@ class SettingsScaffold extends StatelessWidget {
         title: Text(
           title,
           style: const TextStyle(
-              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
       body: bodyBuilder(),
@@ -269,8 +276,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
             icon: Icons.lock_outline,
             title: 'Change Password',
             subtitle: 'Update your account password regularly',
-            trailing: Icon(Icons.arrow_forward_ios,
-                size: 16, color: Colors.grey.shade600),
+            trailing: const Icon(Icons.arrow_forward_ios,
+                size: 16, color: Color(0xff008f99)),
             onTap: () {
               // Navigate to change password
             },
@@ -282,7 +289,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
             trailing: Switch(
               value: _twoFA,
               onChanged: (v) => setState(() => _twoFA = v),
-              activeColor: Colors.green,
+              activeColor: Color(0xff008f99),
             ),
           ),
           _buildCard(
@@ -292,7 +299,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
             trailing: Switch(
               value: _biometric,
               onChanged: (v) => setState(() => _biometric = v),
-              activeColor: Colors.green,
+              activeColor: Color(0xff008f99),
             ),
           ),
           _buildCard(
@@ -302,25 +309,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
             trailing: Switch(
               value: true,
               onChanged: (_) {},
-              activeColor: Colors.green,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Center(
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.exit_to_app),
-              label: const Text('Logout from All Devices'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              ),
-              onPressed: () {
-                // logout logic
-              },
+              activeColor: Color(0xff008f99),
             ),
           ),
         ],
@@ -345,10 +334,11 @@ class _SecurityScreenState extends State<SecurityScreen> {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Colors.blue.shade50,
+            color: Color(0xff008f99),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(icon, color: Colors.blue.shade700, size: 24),
+          child: Icon(icon,
+              color: const Color.fromARGB(255, 255, 255, 255), size: 24),
         ),
         title: Text(title,
             style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
@@ -368,43 +358,52 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Example data
-    const userName = 'Mostafa Mohamed';
-    const email = 'mostafa@example.com';
+    const userName = 'Mario Samy';
+    const email = 'MarioSamy@example.com';
     const phone = '+20 10 1234 5678';
 
     return SettingsScaffold(
       title: 'Account',
       bodyBuilder: () => ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         children: [
           ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Username'),
+            leading: const Icon(Icons.person,color:Color(0xff008f99),size: 30,),
+            title: const Text('Username',style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),),
             subtitle: const Text(userName),
-            trailing: const Icon(Icons.edit),
+            trailing: const Icon(Icons.edit,color:Color(0xff008f99),),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.email),
-            title: const Text('Email'),
+            leading: const Icon(Icons.email,color:Color(0xff008f99),size: 30,),
+            title: const Text('Email',style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),),
             subtitle: const Text(email),
-            trailing: const Icon(Icons.edit),
+            trailing: const Icon(Icons.edit,color:Color(0xff008f99),),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.phone),
-            title: const Text('Phone Number'),
+            leading: const Icon(Icons.phone,color:Color(0xff008f99),size: 30,),
+            title: const Text('Phone Number',style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),),
             subtitle: const Text(phone),
-            trailing: const Icon(Icons.edit),
+            trailing: const Icon(Icons.edit,color:Color(0xff008f99),),
             onTap: () {},
           ),
           const Divider(),
           ListTile(
-            leading: const Icon(Icons.lock),
-            title: const Text('Change Password'),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+            leading: const Icon(Icons.lock,color:Color(0xff008f99),
+            size: 30,),
+            title: const Text('Change Password',style: TextStyle(
+              fontWeight: FontWeight.bold
+            ),),
+            trailing: const Icon(Icons.arrow_forward_ios, size: 16,color:Color(0xff008f99),),
             onTap: () {},
           ),
         ],

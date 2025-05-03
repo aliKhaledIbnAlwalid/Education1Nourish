@@ -4,7 +4,7 @@ import 'package:edunourish/features/student/screens/home/exams_screen.dart';
 import 'package:edunourish/features/student/screens/home/food_place_screen.dart';
 import 'package:edunourish/features/student/screens/list/grades_screen.dart';
 import 'package:edunourish/features/student/screens/list/my_teachers_screen.dart';
-import 'package:edunourish/features/student/screens/list/profile_screen.dart';
+import 'package:edunourish/features/student/screens/list/profile_student_screen.dart';
 import 'package:edunourish/features/student/screens/home/notifiactions_student_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -195,7 +195,7 @@ class DrawerPage extends StatelessWidget {
                   context,
                   icon: Icons.person_outlined,
                   title: 'Profile',
-                  page: const ProfilePageStudent(),
+                  page: const ProfileScreenStudent(),
                 ),
                 Card(
                   color: Colors.red,

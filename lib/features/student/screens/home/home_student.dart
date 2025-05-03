@@ -12,7 +12,6 @@ import 'notifiactions_student_screen.dart';
 import 'subject_screen.dart';
 import 'package:shimmer/shimmer.dart';
 
-
 class HomeStudent extends StatefulWidget {
   const HomeStudent({Key? key}) : super(key: key);
 
@@ -61,52 +60,51 @@ class _HomeStudentState extends State<HomeStudent> {
   @override
   Widget build(BuildContext context) {
     final prov = context.watch<StudentProvider>();
-   if (prov.isLoading) {
-    return Scaffold(
-      backgroundColor: const Color(0xfff2f2f2),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
-        child: Shimmer.fromColors(
-          baseColor: Colors.grey.shade300,
-          highlightColor: Colors.grey.shade100,
-          child: Column(
-            children: [
-              // carousel placeholder
-              ClipRRect(
-                borderRadius: BorderRadius.circular(25),
-                child: Container(
-                  height: 250,
-                  color: Colors.white,
+    if (prov.isLoading) {
+      return Scaffold(
+        backgroundColor: const Color(0xfff2f2f2),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 120, left: 20, right: 20),
+          child: Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            child: Column(
+              children: [
+                // carousel placeholder
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(25),
+                  child: Container(
+                    height: 250,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              // indicator placeholder
-              Container(
-                width: 100,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(4),
+                const SizedBox(height: 10),
+                // indicator placeholder
+                Container(
+                  width: 100,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              // feature‐cards skeleton row 1
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(2, (_) => _shimmerCard()),
-              ),
-              const SizedBox(height: 20),
-              // feature‐cards skeleton row 2
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(2, (_) => _shimmerCard()),
-              ),
-            ],
+                const SizedBox(height: 20),
+                // feature‐cards skeleton row 1
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(2, (_) => _shimmerCard()),
+                ),
+                const SizedBox(height: 20),
+                // feature‐cards skeleton row 2
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(2, (_) => _shimmerCard()),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  
+      );
     }
 
     final newsList = prov.newsList;
@@ -268,7 +266,7 @@ class _HomeStudentState extends State<HomeStudent> {
 
 // Reusable feature‐card builder
 Widget _buildFeatureCard(String imagePath, String title, VoidCallback onTap) {
-  return GestureDetector(
+  return InkWell(
     onTap: onTap,
     child: Container(
       width: 170,
@@ -384,6 +382,7 @@ class NewsPageStudent extends StatelessWidget {
     );
   }
 }
+
 Widget _shimmerCard() {
   return ClipRRect(
     borderRadius: BorderRadius.circular(16),
