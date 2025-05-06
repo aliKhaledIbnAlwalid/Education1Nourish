@@ -12,22 +12,14 @@ class MyChildScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'My Child',
         child: Container(
       padding: const EdgeInsets.only(left: 16.0, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 10),
-          const Text(
-            'Welcome Mohamed',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-            textAlign: TextAlign.start,
-          ),
-           
-          const SizedBox(height: 25),
+          
+          const SizedBox(height: 35),
           TextField(
             decoration: InputDecoration(
               hintText: 'Hinted search text',
@@ -58,7 +50,7 @@ class MyChildScreenBody extends StatelessWidget {
             ),
           ),
           
-         
+         const SizedBox(height: 20),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,

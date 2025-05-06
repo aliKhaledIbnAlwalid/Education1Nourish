@@ -21,6 +21,7 @@ class _AttendenceScreenBodyState extends State<AttendenceScreenBody> {
     double commonWidth = MediaQuery.of(context).size.width - 20;
 
     return BaseScaffold(
+      appBartTitle: 'Attendance',
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Column(

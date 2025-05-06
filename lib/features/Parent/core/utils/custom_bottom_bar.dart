@@ -13,16 +13,14 @@ class CustomBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, -3),
-            spreadRadius: 0,
-          ),
-        ],
+    
+    border: Border(
+      top: BorderSide(
+        color: Colors.grey.shade300, // لون الخط
+        width: 1,                     // سمك الخط
       ),
+    ),
+  ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: Container(

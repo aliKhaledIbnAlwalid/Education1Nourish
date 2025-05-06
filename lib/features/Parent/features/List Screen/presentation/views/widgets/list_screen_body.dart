@@ -18,6 +18,7 @@ class ListScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'List Screen',
       child: Container(
         color: ourBackgroundColor,
         child: Column(

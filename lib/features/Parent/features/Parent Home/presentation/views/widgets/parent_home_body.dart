@@ -11,6 +11,7 @@ class ParentHomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: '',
       child: Expanded(
         child: Column(
           children: [

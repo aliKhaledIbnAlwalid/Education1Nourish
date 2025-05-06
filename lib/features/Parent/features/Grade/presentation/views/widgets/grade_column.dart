@@ -12,7 +12,7 @@ class GradeColumn extends StatefulWidget {
     super.key,
     required this.label,
     required this.grade,
-    this.isAnimated = true,
+    required this.isAnimated,
     this.animationDuration = const Duration(milliseconds: 800),
   });
 
@@ -61,7 +61,7 @@ class _GradeColumnState extends State<GradeColumn> {
         const SizedBox(height: 8),
         Text(
           '${widget.grade.toInt()}%',
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: ourMainColor,
@@ -70,6 +70,7 @@ class _GradeColumnState extends State<GradeColumn> {
       ],
     );
   }
+  // value : animation progress value (0.0 to 1.0) that controls how full the circular progress indicator appears
 
   Widget _buildGradeIndicator(double value) {
     final letter = _getLetterGrade(widget.grade);
@@ -81,14 +82,14 @@ class _GradeColumnState extends State<GradeColumn> {
           width: 60,
           child: CircularProgressIndicator(
             value: value,
-            strokeWidth: 8,
+            strokeWidth: 6,
             backgroundColor: Colors.grey.shade200,
             color: ourMainColor,
           ),
         ),
         Text(
           letter,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: ourMainColor,

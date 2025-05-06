@@ -37,11 +37,11 @@ class _GradeScreenBodyState extends State<GradeScreenBody> {
     ];
 
     return BaseScaffold(
+      appBartTitle: 'Grades',
       child: Column(
         
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("Grades", style: textBold28),
           Expanded(
             child: ListView.builder(
               itemCount: subjects.length,

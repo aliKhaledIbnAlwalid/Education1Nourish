@@ -33,6 +33,7 @@ class BusScreenBodyState extends State<BusScreenBody> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'Bus Screen', // عنوان الشاشة
       child: RefreshIndicator(
         onRefresh: _handleRefresh, // ربط السحب مع الدالة
         child: SingleChildScrollView(

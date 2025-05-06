@@ -18,36 +18,23 @@ class ClassesScreenBody extends StatelessWidget {
     ];
 
     return BaseScaffold(
+      appBartTitle: "Classes",
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
-              const HeaderTitle(),
+              const SizedBox(height: 30),
               // Search Box
               const SearchBar(),
-              const SizedBox(height: 16),
-              // Subjects Section
-              // const Text(
-              //   "subject",
-              //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              // ),
-              // const SizedBox(height: 8),
-              // SingleChildScrollView(
-              //   scrollDirection: Axis.horizontal,
-              //   child: Row(
-              //     children: subjects.map(_buildSubjectContainer).toList(),
-              //   ),
-              // ),
-              // const SizedBox(height: 16),
-              // // Class Schedule Section
+              const SizedBox(height: 30),
+              
               const Text(
                 "class schedule",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               classSchedule(),
               const SizedBox(height: 16),
               // Bus Schedules Section

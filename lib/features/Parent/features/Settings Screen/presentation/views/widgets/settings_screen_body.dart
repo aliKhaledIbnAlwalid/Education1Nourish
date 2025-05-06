@@ -9,6 +9,7 @@ class SettingsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle:   'Settings',
       child: Container(
         color: ourBackgroundColor,
         child: Column(

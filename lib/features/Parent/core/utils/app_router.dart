@@ -17,7 +17,7 @@ import 'package:edunourish/features/Parent/features/Teacher%20Screen/presentatio
 
 abstract class AppRouter {
   
-
+ 
   static Future<T?> toParentHome<T>(BuildContext c) =>
       Navigator.push<T>(c, MaterialPageRoute(builder: (_) => const ParentHome()));
 

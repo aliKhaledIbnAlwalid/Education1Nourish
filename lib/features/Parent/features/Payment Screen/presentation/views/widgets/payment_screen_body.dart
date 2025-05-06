@@ -62,23 +62,14 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
   @override
   Widget build(BuildContext context) {
     return  BaseScaffold(
+      appBartTitle: 'Payment',
       child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
              
-              // Payment Icon
-              const Text(
-              'Payment',
-              style: TextStyle(
-                color: myBlackColor,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 30),
+              
               const Icon(
                 Icons.account_balance_wallet,
                 size: 64,
