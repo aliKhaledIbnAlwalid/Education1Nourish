@@ -62,6 +62,7 @@ class _PaymentScreenBodyState extends State<PaymentScreenBody> {
   @override
   Widget build(BuildContext context) {
     return  BaseScaffold(
+      
       appBartTitle: 'Payment',
       child: Padding(
           padding: const EdgeInsets.all(16.0),

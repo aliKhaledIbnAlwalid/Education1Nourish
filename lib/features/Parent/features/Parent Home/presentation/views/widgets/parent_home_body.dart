@@ -12,6 +12,7 @@ class ParentHomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseScaffold(
       appBartTitle: '',
+      wantAppBar: false,
       child: Expanded(
         child: Column(
           children: [
@@ -52,7 +53,7 @@ class ParentHomeBody extends StatelessWidget {
                     },
                     child: const BuildIconCard(
                         label: 'Food Place',
-                        imagePath: theRestaurantHome,
+                        imagePath: restaurantImage,
                         ),
                   ),
                   InkWell(
@@ -61,7 +62,7 @@ class ParentHomeBody extends StatelessWidget {
                     },
                     child: const BuildIconCard(
                         label: 'Payment',
-                        imagePath: thePaymentHome,
+                        imagePath: paymentHome,
                         ),
                   ),
                 ],

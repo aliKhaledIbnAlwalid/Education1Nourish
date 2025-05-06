@@ -69,7 +69,7 @@ class CustomBottomBar extends StatelessWidget {
                   AppRouter.toSettingsScreen(context);
                 },
                 icon: const Icon(
-                  Icons.settings, 
+                  Icons.settings_rounded, 
                   size: 33,
                   color: ourMainColor,
                 ),

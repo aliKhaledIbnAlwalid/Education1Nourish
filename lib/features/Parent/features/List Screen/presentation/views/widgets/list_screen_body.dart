@@ -28,14 +28,7 @@ class ListScreenBody extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
                 child: ListView(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 15),
-                      child: Text(
-                        'Menu',
-                        style: textBold28,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
+                    
                     _buildSettingsCategory(title: 'Academic', icon: Icons.school_outlined),
                     
                     _buildSettingsTile(
