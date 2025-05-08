@@ -12,53 +12,45 @@ class MyChildScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'My Child',
         child: Container(
       padding: const EdgeInsets.only(left: 16.0, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 10),
-          const Text(
-            'Welcome Mohamed',
-            style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.w600,
-            ),
-            textAlign: TextAlign.start,
-          ),
-           
-          const SizedBox(height: 25),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Hinted search text',
-              prefixIcon: const Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Icon(Icons.menu, color: ourMainColor),
-              ),
-              suffixIcon: const Padding(
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Icon(Icons.search, color: ourMainColor),
-              ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 5),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                
-                borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
-              ),
-              filled: true,
-              fillColor: Colors.white,
-            ),
-          ),
           
-         
+          const SizedBox(height: 35),
+          // TextField(
+          //   decoration: InputDecoration(
+          //     hintText: 'Hinted search text',
+          //     prefixIcon: const Padding(
+          //       padding: EdgeInsets.only(left: 20, right: 20),
+          //       child: Icon(Icons.menu, color: ourMainColor),
+          //     ),
+          //     suffixIcon: const Padding(
+          //       padding: EdgeInsets.only(left: 20, right: 20),
+          //       child: Icon(Icons.search, color: ourMainColor),
+          //     ),
+          //     contentPadding: const EdgeInsets.symmetric(vertical: 5),
+          //     border: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+                
+          //       borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
+          //     ),
+          //     enabledBorder: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //       borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
+          //     ),
+          //     focusedBorder: OutlineInputBorder(
+          //       borderRadius: BorderRadius.circular(15),
+          //       borderSide:  BorderSide(color: Colors.grey.shade500), // Grey border
+          //     ),
+          //     filled: true,
+          //     fillColor: Colors.white,
+          //   ),
+          // ),
+          _buildChildProfileCard(),
+         const SizedBox(height: 20),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -82,7 +74,7 @@ class MyChildScreenBody extends StatelessWidget {
                     onTap: () {
                       AppRouter.toRestaurantScreen(context);
                     },
-                    child: const BuildIconCard(label: 'Food Place', imagePath: theRestaurantHome,imageSize: 72,)),
+                    child: const BuildIconCard(label: 'Food Place', imagePath: restaurantImage,imageSize: 72,)),
                 InkWell(
                     onTap: () {
                       AppRouter.toGradeScreen(context);
@@ -98,7 +90,7 @@ class MyChildScreenBody extends StatelessWidget {
                       AppRouter.toBusScreen(context);
                     },
                     child:
-                        const BuildIconCard(label: 'Bus', imagePath: busLocation,imageSize: 72,)),
+                        const BuildIconCard(label: 'Bus', imagePath: theBusLocation,imageSize: 72,)),
               ],
             ),
           ),
@@ -107,3 +99,84 @@ class MyChildScreenBody extends StatelessWidget {
     ));
   }
 }
+
+Widget _buildChildProfileCard() {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [ourMainColor, Color(0xFF7986CB)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: ourMainColor.withOpacity(0.3),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            height: 70,
+            width: 70,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.white, width: 2),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+            ),
+            child: const Center(
+              child: Icon(
+                Icons.person,
+                size: 40,
+                color: ourMainColor,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'Sarah Johnson',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Grade 5 • Class A',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'ID: 2023-5A-42',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+        ],
+      ),
+    );
+  }

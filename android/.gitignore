@@ -1,13 +1,29 @@
+# Flutter & Android generated files
+.gradle/
 gradle-wrapper.jar
-/.gradle
-/captures/
-/gradlew
-/gradlew.bat
-/local.properties
+captures/
+gradlew
+gradlew.bat
+local.properties
 GeneratedPluginRegistrant.java
 
-# Remember to never publicly share your keystore.
-# See https://flutter.dev/to/reference-keystore
+# Keystore (never commit these)
 key.properties
 **/*.keystore
 **/*.jks
+
+# Build outputs & tool directories
+build/
+.android/
+.dart_tool/
+.packages
+
+# IDE configs
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# C++ build artifacts (ignore your .cxx folder)
+android/app/.cxx/

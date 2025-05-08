@@ -98,8 +98,10 @@ class RestaurantScreenBodyState extends State<RestaurantScreenBody> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'Restaurant',
       child: Column(
         children: [
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: header(),

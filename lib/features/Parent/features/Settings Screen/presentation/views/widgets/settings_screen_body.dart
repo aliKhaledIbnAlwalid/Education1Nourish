@@ -9,6 +9,7 @@ class SettingsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle:   'Settings',
       child: Container(
         color: ourBackgroundColor,
         child: Column(
@@ -18,17 +19,8 @@ class SettingsScreenBody extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: ListView(
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 15),
-                      child: Text(
-                        'Settings',
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
+                    
+                    
                     _buildSettingsCategory(
                       title: 'Account Settings',
                       icon: Icons.person_outline,

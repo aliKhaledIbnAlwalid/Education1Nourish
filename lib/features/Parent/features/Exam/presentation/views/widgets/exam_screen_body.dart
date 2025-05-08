@@ -60,6 +60,7 @@ class _ExamScreenBodyState extends State<ExamScreenBody> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'Exam Screen',
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

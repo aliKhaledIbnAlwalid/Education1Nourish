@@ -29,7 +29,8 @@ class NotificationsScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScaffold(child: notifications.isNotEmpty
+    return BaseScaffold(appBartTitle: 'Notifications',
+    child: notifications.isNotEmpty
           ? ListView.builder(
               itemCount: notifications.length,
               itemBuilder: (context, index) {

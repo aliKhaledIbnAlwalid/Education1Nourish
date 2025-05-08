@@ -12,6 +12,7 @@ class ParentProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: 'Profile',
       child: Column(
         children: [
           // Profile header with avatar

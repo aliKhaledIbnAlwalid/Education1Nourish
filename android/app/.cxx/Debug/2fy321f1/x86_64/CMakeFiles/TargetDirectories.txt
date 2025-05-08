@@ -1,2 +1,0 @@
-D:/final project (EduNourish)/eduNourish - Copy/android/app/.cxx/Debug/2fy321f1/x86_64/CMakeFiles/edit_cache.dir
-D:/final project (EduNourish)/eduNourish - Copy/android/app/.cxx/Debug/2fy321f1/x86_64/CMakeFiles/rebuild_cache.dir

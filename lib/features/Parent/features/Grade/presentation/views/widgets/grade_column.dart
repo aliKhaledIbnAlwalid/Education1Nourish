@@ -1,52 +1,109 @@
+import 'package:edunourish/core/utils/constants.dart';
+import 'package:edunourish/features/Parent/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
-class GradeColumn extends StatelessWidget {
+class GradeColumn extends StatefulWidget {
   final String label;
   final double grade;
-  final bool showIcon;
-  final IconData? icon;
-
+  final bool isAnimated;
+  final Duration animationDuration;
+  
   const GradeColumn({
     super.key,
     required this.label,
     required this.grade,
-    this.showIcon = false,
-    this.icon,
+    required this.isAnimated,
+    this.animationDuration = const Duration(milliseconds: 800),
   });
 
   @override
-  Widget build(BuildContext context) {
-    // Determine color based on grade
-    Color gradeColor;
-    if (grade >= 80) {
-      gradeColor = Colors.green;
-    } else if (grade >= 70) {
-      gradeColor = Colors.orange;
-    } else {
-      gradeColor = Colors.red;
-    }
+  _GradeColumnState createState() => _GradeColumnState();
+}
 
+class _GradeColumnState extends State<GradeColumn> {
+  late bool _shouldAnimate;
+
+  @override
+  void initState() {
+    super.initState();
+    _shouldAnimate = widget.isAnimated;
+  }
+
+  // Compute percentage for the progress indicator
+  double get _percentage => widget.grade / 100;
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        if (showIcon && icon != null) Icon(icon, size: 20, color: Colors.grey.shade700),
-        const SizedBox(height: 4),
         Text(
-          label,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey.shade700,
+          widget.label,
+          style: mainText14.copyWith(
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
+        _shouldAnimate
+            ? TweenAnimationBuilder<double>(
+                tween: Tween<double>(begin: 0.0, end: _percentage),
+                duration: widget.animationDuration,
+                onEnd: () {
+                  setState(() {
+                    _shouldAnimate = false;
+                  });
+                },
+                builder: (context, value, child) {
+                  return _buildGradeIndicator(value);
+                },
+              )
+            : _buildGradeIndicator(_percentage),
+        const SizedBox(height: 8),
         Text(
-          '$grade%',
-          style: TextStyle(
+          '${widget.grade.toInt()}%',
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: gradeColor,
+            color: ourMainColor,
           ),
         ),
       ],
     );
+  }
+  // value : animation progress value (0.0 to 1.0) that controls how full the circular progress indicator appears
+
+  Widget _buildGradeIndicator(double value) {
+    final letter = _getLetterGrade(widget.grade);
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        SizedBox(
+          height: 60,
+          width: 60,
+          child: CircularProgressIndicator(
+            value: value,
+            strokeWidth: 6,
+            backgroundColor: Colors.grey.shade200,
+            color: ourMainColor,
+          ),
+        ),
+        Text(
+          letter,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: ourMainColor,
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _getLetterGrade(double grade) {
+    if (grade >= 90) return 'A';
+    if (grade >= 80) return 'B';
+    if (grade >= 70) return 'C';
+    if (grade >= 60) return 'D';
+    return 'F';
   }
 }

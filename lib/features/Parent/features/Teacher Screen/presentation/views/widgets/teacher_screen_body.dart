@@ -16,6 +16,7 @@ class TeacherScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBartTitle: "Teachers",
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
